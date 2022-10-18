@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Show";
+}
+
+<div class="Show" id=@($"{ ViewBag.student.Id }")>
+    <h2>Show: Student</h2>
+    <p>Id: @($"{ ViewBag.student.Id }")</p>
+    <p>Name: @($"{ ViewBag.student.Name }")</p>
+    <p>Phone: @($"{ ViewBag.student.Phone }")</p>
+</div>
+
+<script>
+    function showStudentLi(viewStudent) {
+        let student = viewStudent.Student
+        let li = $('<li>')
+
+        console.log('1')
+
+        li.append(
+            $('p').text(`Id:${student.Id}; Name:${student.Name}; Phone:${student.Phone}`)
+        ).append(`<a href="${viewStudent.ShowUrl}">Show</a>`)
+
+
+        return li
+    }
+
+    $(document).ready(function () {
+        $.get("http://localhost:50369/api/students/", function (response) {
+            let viewStudents = JSON.parse(response)
+
+            $('#Students').append(showStudentLi(viewStudents[0]))
+        })
+    })
+</script>
+
