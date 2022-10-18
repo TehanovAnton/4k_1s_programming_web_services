@@ -18,7 +18,8 @@ namespace solution.Controllers
                           [FromUri] string sort = null,
                           [FromUri] int? offset = null,
                           [FromUri] int? maxid = null,
-                          [FromUri] int? minid = null)
+                          [FromUri] int? minid = null,
+                          [FromUri] string like = null)
         {
             List<StudentWL> students = StudentWL.StudentsWithLinks(DB.GetAll());
 
@@ -27,6 +28,9 @@ namespace solution.Controllers
 
             if (!string.IsNullOrEmpty(sort))
                 students = students.OrderBy(stud => stud.Student.Name).ToList();
+
+            if (!string.IsNullOrEmpty(like))
+                students = students.Where(stud => stud.Student.Name == like).ToList();
 
             if (offset.HasValue)
                 students = students.Skip(offset.Value).ToList();
