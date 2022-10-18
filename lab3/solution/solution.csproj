@@ -276,10 +276,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CollectionSWL.cs" />
+    <Compile Include="Models\ErrorWL.cs" />
     <Compile Include="Models\ModelWL.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentWL.cs" />
-    <Compile Include="Models\StudentTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

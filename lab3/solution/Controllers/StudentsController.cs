@@ -3,6 +3,9 @@ using solution.DataBase;
 using solution.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -13,13 +16,13 @@ namespace solution.Controllers
     public class StudentsController : ApiController
     {
         [Route("students.{extension:alpha}")]
-        public string Get(string extension,
-                          [FromUri] int? limit = null,
-                          [FromUri] string sort = null,
-                          [FromUri] int? offset = null,
-                          [FromUri] int? maxid = null,
-                          [FromUri] int? minid = null,
-                          [FromUri] string like = null)
+        public HttpResponseMessage Get(HttpRequestMessage request, string extension,
+                                       [FromUri] int? limit = null,
+                                       [FromUri] string sort = null,
+                                       [FromUri] int? offset = null,
+                                       [FromUri] int? maxid = null,
+                                       [FromUri] int? minid = null,
+                                       [FromUri] string like = null)
         {
             List<StudentWL> students = StudentWL.StudentsWithLinks(DB.GetAll());
 
@@ -39,9 +42,9 @@ namespace solution.Controllers
                 students = students.Where(stud => stud.Id >= minid.Value).ToList();
 
             if (maxid.HasValue)
-                students = students.Where(stud => stud.Id <= maxid.Value).ToList();
+                students = students.Where(stud => stud.Id <= maxid.Value).ToList();            
 
-            return JsonConvert.SerializeObject(students);
+            return JsonResponse(request, JsonConvert.SerializeObject(students));
         }
 
         // GET api/students/5        
@@ -74,6 +77,14 @@ namespace solution.Controllers
         public void Delete(int id)
         {
             DB.Delete(id);
+        }
+
+        private HttpResponseMessage JsonResponse(HttpRequestMessage request, string body = null)
+        {
+            HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, body);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            return response;
         }
     }
 }
