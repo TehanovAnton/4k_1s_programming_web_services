@@ -13,7 +13,7 @@ namespace solution.Controllers
     public class StudentsController : ApiController
     {
         [Route("students.{extension:alpha}")]
-        public string Get(string extension, [FromUri] int? limit = null, [FromUri] string sort = null)
+        public string Get(string extension, [FromUri] int? limit = null, [FromUri] string sort = null, [FromUri] int? offset = null)
         {
             List<StudentWL> students = StudentWL.StudentsWithLinks(DB.GetAll());
 
@@ -22,6 +22,9 @@ namespace solution.Controllers
 
             if (!string.IsNullOrEmpty(sort))
                 students = students.OrderBy((StudentWL stud) => stud.Student.Name).ToList();
+
+            if (offset.HasValue)
+                students = students.Skip(offset.Value).ToList();
 
             return JsonConvert.SerializeObject(students);
         }
