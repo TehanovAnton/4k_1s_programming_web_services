@@ -12,9 +12,12 @@ namespace solution.Models
         public string Name { get; set; }
         public string Phone { get; set; }
 
-        public StudentWL StudentWithLinks()
+        public StudentWL StudentWithLinks(string columns = "Id,Name,Phone")
         {
-            return new StudentWL(this);
+            char[] separators = new char[] { ',' };
+            List<string> columnsList = columns.Split(separators).ToList();
+
+            return new StudentWL(this, columnsList);
         }
     }
 }

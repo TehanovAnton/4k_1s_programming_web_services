@@ -9,11 +9,11 @@ namespace solution.Models
     {
         public static string UrlPref = "http://localhost:50369/api/students";
 
-        public static List<StudentWL> StudentsWithLinks(List<Student> students)
+        public static List<StudentWL> StudentsWithLinks(List<Student> students, string columns = "Id,Name,Phone")
         {
             List<StudentWL> studentsWithLinks = new List<StudentWL>();
             foreach(Student student in students)
-                studentsWithLinks.Add(student.StudentWithLinks());
+                studentsWithLinks.Add(student.StudentWithLinks(columns));
 
             return studentsWithLinks;
         }

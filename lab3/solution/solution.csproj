@@ -280,6 +280,7 @@
     <Compile Include="Models\ModelWL.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentWL.cs" />
+    <Compile Include="Models\StudProto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

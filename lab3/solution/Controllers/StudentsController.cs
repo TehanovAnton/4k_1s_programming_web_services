@@ -22,9 +22,10 @@ namespace solution.Controllers
                                        [FromUri] int? offset = null,
                                        [FromUri] int? maxid = null,
                                        [FromUri] int? minid = null,
-                                       [FromUri] string like = null)
+                                       [FromUri] string like = null,
+                                       [FromUri] string columns = "Id,Name,Phone")
         {
-            List<StudentWL> students = StudentWL.StudentsWithLinks(DB.GetAll());
+            List<StudentWL> students = StudentWL.StudentsWithLinks(DB.GetAll(), columns);
 
             if (limit.HasValue)
                 students = students.Take(limit.Value).ToList();

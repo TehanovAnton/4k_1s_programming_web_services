@@ -8,9 +8,9 @@ namespace solution.Models
     [Serializable]
     public class CollectionSWL : ModelWL
     {
-        public CollectionSWL(List<Student> students)
+        public CollectionSWL(List<Student> students, string columns)
         {
-            Collection = StudentsWithLinks(students);
+            Collection = StudentsWithLinks(students, columns);
             CollectionUrl = UrlPref;
         }
 
