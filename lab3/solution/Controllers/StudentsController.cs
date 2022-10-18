@@ -2,6 +2,7 @@
 using solution.DataBase;
 using solution.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -12,9 +13,13 @@ namespace solution.Controllers
     public class StudentsController : ApiController
     {
         [Route("students.{extension:alpha}")]
-        public string Get(string extension)
+        public string Get(string extension, [FromUri] int? limit)
         {
             List<StudentWL> students = StudentWL.StudentsWithLinks(DB.GetAll());
+
+            if (limit.HasValue)
+                students = students.Take(limit.Value).ToList();
+
             return JsonConvert.SerializeObject(students);
         }
 
