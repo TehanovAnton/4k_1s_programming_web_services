@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -23,6 +24,7 @@ namespace solution.Controllers
                                        [FromUri] int? maxid = null,
                                        [FromUri] int? minid = null,
                                        [FromUri] string like = null,
+                                       [FromUri] string globallike = null,
                                        [FromUri] string columns = "Id,Name,Phone")
         {
             List<StudentWL> students = StudentWL.StudentsWithLinks(DB.GetAll(), columns);
@@ -35,6 +37,12 @@ namespace solution.Controllers
 
             if (!string.IsNullOrEmpty(like))
                 students = students.Where(stud => stud.Student.Name == like).ToList();
+
+            if (!string.IsNullOrEmpty(globallike))
+                students = students
+                    .Where(stud => {
+                        return Regex.IsMatch(stud.Student.GlobalStr, $@".*{globallike}.*");
+                    }).ToList();
 
             if (offset.HasValue)
                 students = students.Skip(offset.Value).ToList();

@@ -10,18 +10,26 @@ namespace solution.Models
     {
         public StudProto(Student student, List<string> columns)
         {
-            if (columns.Any((c) => c == "Id"))
+            if (IsInclude(columns, "Id"))
                 Id = student.Id;
 
-            if (columns.Any((c) => c == "Name"))
+            if (IsInclude(columns, "Name"))
                 Name = student.Name;
 
-            if (columns.Any((c) => c == "Phone"))
+            if (IsInclude(columns, "Phone"))
                 Phone = student.Phone;
+
+            GlobalStr = student.Id + student.Name + student.Phone;
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
+        public string GlobalStr { get; set; }
+
+        private bool IsInclude(List<string> columns, string column)
+        {
+            return columns.Any((c) => c == column);
+        }
     }
 }
