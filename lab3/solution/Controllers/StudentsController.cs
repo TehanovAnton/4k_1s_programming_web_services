@@ -2,6 +2,7 @@
 using solution.DataBase;
 using solution.Models;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,6 +10,7 @@ using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Xml.Serialization;
 
 namespace solution.Controllers
 {
@@ -53,7 +55,7 @@ namespace solution.Controllers
             if (maxid.HasValue)
                 students = students.Where(stud => stud.Id <= maxid.Value).ToList();            
 
-            return JsonResponse(request, JsonConvert.SerializeObject(students));
+            return JsonResponse(request, SerializeStudents(extension, students));
         }
 
         // GET api/students/5        
@@ -95,5 +97,22 @@ namespace solution.Controllers
 
             return response;
         }
+
+        private string SerializeStudents(string type, List<StudentWL> students)
+        {
+            if (type == "json")
+                return JsonConvert.SerializeObject(students);
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<StudentWL>));
+            string xmlContent = "";
+
+            using (StringWriter strWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(strWriter, students);
+                xmlContent = strWriter.ToString();
+            }
+
+            return xmlContent;
+        }            
     }
 }

@@ -10,6 +10,8 @@ namespace solution.Models
     [Serializable]
     public class StudentWL : ModelWL
     {
+        public StudentWL() { }
+
         public StudentWL(Student student, List<string> columns)
         {
             Id = student.Id;

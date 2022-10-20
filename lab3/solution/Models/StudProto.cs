@@ -8,6 +8,8 @@ namespace solution.Models
     [Serializable]
     public class StudProto
     {
+        public StudProto() { }
+
         public StudProto(Student student, List<string> columns)
         {
             if (IsInclude(columns, "Id"))
