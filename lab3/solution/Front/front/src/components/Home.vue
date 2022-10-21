@@ -10,12 +10,11 @@
   })  
   
   async function fetchStudents () {
-    let studentsUrl = `http://localhost:50369/api/students`
+    let studentsUrl = `http://localhost:50369/api/students.json/`
     let response = await axios.get(studentsUrl)
     .catch(error => {
       console.log(error)
     })
-    
     if (response.status == 200 ) {
       studentsWl.value = JSON.parse(response.data)
     } else {

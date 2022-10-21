@@ -1,5 +1,6 @@
 <script setup>
   import { ref, computed, onBeforeMount } from 'vue'
+  import { useRoute } from 'vue-router'
   import router from "../router/router";
   import axios from 'axios'
 
@@ -15,10 +16,8 @@
     await fetchStudent()    
   })
 
-  const student = computed(() => studentWL.value.Student)
 
   const fetchStudent = async () => {
-    debugger
     let studentUrl = route.params.link;
     let response = await axios.get(studentUrl)
     .catch(error => {
@@ -29,14 +28,10 @@
   }
 
   const updateStudent = async () => {
-    let response = await axios({
-      url: studentWL.value.UpdateUrl,
-      method: 'put',      
-      data: {
-        Name: studentParams.value.name,
-        Phone: studentParams.value.phone,
-        Id: studentWL.value.Id
-      }
+    await axios.put(studentWL.value.UpdateUrl, {
+      Name: studentParams.value.name,
+      Phone: studentParams.value.phone,
+      Id: studentWL.value.Id
     })
     .catch(error => {
       console.log(error)
@@ -46,10 +41,8 @@
   }
 
   const destroyStudent = async () => {
-    let response = await axios({
-      url: studentWL.value.DestroyUrl,
-      method: 'delete'
-    })
+    debugger
+    await axios.delete(studentWL.value.DestroyUrl)
     .catch(error => {
       console.log(error)
     })
@@ -69,7 +62,7 @@
   
 <template>
     <div>
-      <p>Id:{{ student.Id }}; Name:{{ student.Name }}; Phone:{{ student.Phone }}</p>
+      <p>Id:{{ studentWL.Student.Id }}; Name:{{ studentWL.Student.Name }}; Phone:{{ studentWL.Student.Phone }}</p>
     </div>
 
     <form>
