@@ -1,0 +1,39 @@
+<script setup>
+  import { onBeforeMount, ref, computed } from 'vue'
+  import router from "../router/router";
+  import axios from 'axios'
+
+  const studentsWl = ref({})  
+
+  onBeforeMount(async () => {
+    await fetchStudents()
+  })  
+  
+  async function fetchStudents () {
+    let studentsUrl = `http://localhost:50369/api/students`
+    let response = await axios.get(studentsUrl)
+    .catch(error => {
+      console.log(error)
+    })
+    
+    if (response.status == 200 ) {
+      studentsWl.value = JSON.parse(response.data)
+    } else {
+      studentsWl.value = { Name: 'error' }
+    }
+  }
+
+  const studentShow = (studentId, studentLink) => {
+    router.push({ name: 'student', params: { id: studentId, link: studentLink } })
+  }
+
+</script>
+
+<template>
+  <ul>
+    <li v-for="studentWL in studentsWl">
+      <p>Id:{{ studentWL.Student.Id }}; Name:{{ studentWL.Student.Name }}; Phone:{{ studentWL.Student.Phone }}</p>
+      <a href="#" @click="studentShow(studentWL.Student.Id, studentWL.GetUrl)">Show</a>
+    </li>
+  </ul>
+</template>

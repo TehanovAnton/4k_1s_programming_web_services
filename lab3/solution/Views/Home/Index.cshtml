@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+Students:
+<ul id="Students">
+</ul>
+
+<script>
+    function showStudentLi(viewStudent) {
+        let student = viewStudent.Student
+        let li = $('<li>')
+
+        console.log('1')
+
+        li.append(
+            $('p').text(`Id:${student.Id}; Name:${student.Name}; Phone:${student.Phone}`)
+        ).append(`<a href="${viewStudent.ShowUrl}">Show</a>`)
+
+
+        return li
+    }
+
+    $(document).ready(function () {
+        $.get("http://localhost:50369/api/students/", function (response) {
+            let viewStudents = JSON.parse(response)
+
+            viewStudents.forEach(viewStudent => {
+                $('#Students').append(showStudentLi(viewStudent))
+            })            
+        })
+    })
+</script>
