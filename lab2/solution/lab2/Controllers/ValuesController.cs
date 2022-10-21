@@ -9,9 +9,10 @@ namespace lab2.Controllers
 {   
     public class ValuesController : ApiController, IRequiresSessionState
     {
-        private HttpSessionState session = HttpContext.Current.Session;
+        private static int RESULT = 0;
         private static Stack<int> globalStack = new Stack<int>();
 
+        // GET
         public int Get()
         {
             int result = GetResult();
@@ -23,7 +24,7 @@ namespace lab2.Controllers
             return result;
         }
 
-        // POST api/values
+        // POST
         public void Post([FromBody] string value)
         {
             string res = ParamByName("RESULT");
@@ -33,7 +34,7 @@ namespace lab2.Controllers
             }
         }
 
-        // PUT api/values
+        // PUT
         public string Put([FromBody] string value)
         {
             string element = ParamByName("ADD");
@@ -45,7 +46,7 @@ namespace lab2.Controllers
             return JsonConvert.SerializeObject(globalStack);
         }
 
-        // DELETE api/values
+        // DELETE
         public string Delete()
         {
             if (globalStack.Count != 0)
@@ -64,18 +65,13 @@ namespace lab2.Controllers
 
         private int GetResult()
         {
-            if (session.Count == 0)
-                session.Add("RESULT", 0);
-
-            return (int)session["RESULT"];
+            return RESULT;
         }
 
         private void SetResult(int? value)
         {
-            if(value != null)
-            {
-                session["RESULT"] = value;
-            }
+            if (value != null)
+                RESULT = value.Value;
         }
     }
 }
