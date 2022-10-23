@@ -19,7 +19,7 @@ namespace solution.Models
             GetUrl = $"{UrlPref}/{student.Id}";
             UpdateUrl = $"{UrlPref}/{student.Id}";
             CreateUrl = $"{UrlPref}";
-            DestroyUrl = $"{UrlPref}";
+            DestroyUrl = $"{UrlPref}/{student.Id}";
         }
 
         public int Id { get; set; }

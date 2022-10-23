@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Xml.Serialization;
@@ -69,17 +70,23 @@ namespace solution.Controllers
 
         // POST api/values
         [Route("students")]
-        public void Post([FromUri] string name, [FromUri] string phone)
+        public async void Post(HttpRequestMessage request)
         {
-            DB.AddRecord(name, phone);
+            string json = await requesBodyJson(request);
+            StudProto student = JsonConvert.DeserializeObject<StudProto>(json);
+
+            DB.AddRecord(student.Name, student.Phone);
         }
 
         // PUT api/students/5
         [HttpPut]
         [Route("students/{id:int}")]
-        public void Put(int id, [FromUri] string name, [FromUri] string phone)
+        public async void Put(HttpRequestMessage request, int id)
         {
-            DB.Update(id, name, phone);
+            string json = await requesBodyJson(request);
+            StudProto student = JsonConvert.DeserializeObject<StudProto>(json);
+
+            DB.Update(id, student.Name, student.Phone);
         }
 
         // DELETE api/values/5
@@ -88,6 +95,13 @@ namespace solution.Controllers
         public void Delete(int id)
         {
             DB.Delete(id);
+        }
+
+        private async Task<string> requesBodyJson(HttpRequestMessage request)
+        {
+            string json = await request.Content.ReadAsStringAsync();
+
+            return json;
         }
 
         private HttpResponseMessage JsonResponse(HttpRequestMessage request, string body = null)
