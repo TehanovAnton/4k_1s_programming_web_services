@@ -26,9 +26,14 @@
     router.push({ name: 'student', params: { id: studentId, link: studentLink } })
   }
 
+  const newView = () => {
+    router.push({ name: 'createStudent', params: { postStudentUrl: 'http://localhost:50369/api/students/' } });
+  }
 </script>
 
 <template>
+  <button v-on:click="newView">Create New!</button>
+  
   <ul>
     <li v-for="studentWL in studentsWl">
       <p>Id:{{ studentWL.Student.Id }}; Name:{{ studentWL.Student.Name }}; Phone:{{ studentWL.Student.Phone }}</p>

@@ -9,6 +9,11 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue')
     },
     {
+      path: '/students/new?:postStudentUrl',
+      name: 'createStudent',
+      component: () => import('../views/NewView.vue')
+    },
+    {
       path: '/students/:id?:link',
       name: 'student',
       component: () => import('../views/StudentView.vue')
