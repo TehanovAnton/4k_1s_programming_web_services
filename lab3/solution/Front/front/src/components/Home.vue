@@ -37,7 +37,7 @@
   <ul>
     <li v-for="studentWL in studentsWl">
       <p>Id:{{ studentWL.Student.Id }}; Name:{{ studentWL.Student.Name }}; Phone:{{ studentWL.Student.Phone }}</p>
-      <a href="#" @click="studentShow(studentWL.Student.Id, studentWL.GetUrl)">Show</a>
+      <button @click="studentShow(studentWL.Student.Id, studentWL.GetUrl)">Show</button>
     </li>
   </ul>
 </template>

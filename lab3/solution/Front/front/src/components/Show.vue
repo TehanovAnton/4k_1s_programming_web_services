@@ -1,12 +1,20 @@
 <script setup>
   import { ref, onBeforeMount } from 'vue'
-  import { useRoute } from 'vue-router'
   import router from "../router/router";
   import axios from 'axios'
+  import { computed } from '@vue/reactivity';
+  import { useRoute } from 'vue-router';
+
+  const props = defineProps([
+    'student'
+  ]);
 
   const studentWL = ref({})
-  const student = ref({});
   const route = useRoute();
+  const student = computed(() => {
+    debugger
+    return props.student ? props.student.Student : studentWL.value.Student;
+  });
 
   onBeforeMount(async () => {
     await fetchStudent()    
@@ -34,9 +42,17 @@
     router.push({ name:'students' })
   }
 
+  const studentUrl = computed(() => {
+    if (props.student) {
+      return props.student.GetUrl
+    } else {
+      return route.params.link;
+    }
+  })
+
   const fetchStudent = async () => {
-    let studentUrl = route.params.link;
-    let response = await axios.get(studentUrl)
+    debugger
+    let response = await axios.get(studentUrl.value)
     .catch(error => {
       console.log(error)
     })
@@ -47,7 +63,6 @@
   const setStudentByResponse = (response) => {
     if (response.status == 200) {      
       studentWL.value = JSON.parse(response.data)
-      student.value = studentWL.value.Student
     } else {
       console.log('Something went wrong');
       return {}
@@ -56,7 +71,7 @@
 </script>
   
 <template>
-    <StudentForm :action="updateStudent" action-name="Update" :new-stud="student"/>
+    <StudentForm v-if="student" :action="updateStudent" action-name="Update" :new-stud="student"/>
 
     <button @click="destroyStudent">Destroy</button>
 </template>
