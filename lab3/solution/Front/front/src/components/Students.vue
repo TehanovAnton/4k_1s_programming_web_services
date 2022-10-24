@@ -4,9 +4,11 @@
   import axios from 'axios'
   import Show from './Show.vue';
   import { computed } from '@vue/reactivity';
+import { useRoute } from 'vue-router';
 
+  const route = useRoute();
   const studentsWl = ref({})  
-  const currentStudentWlIndex = ref(0);  
+  const currentStudentWlIndex = ref(0);
   const fetched = ref(false)
 
   const currentStudentWl = computed(() => {
@@ -43,7 +45,6 @@
 
     if (response.status == 200 ) {
       studentsWl.value = JSON.parse(response.data)
-      // setCurrentStudentWl()
       fetched.value = true;
     } else {
       studentsWl.value = { Name: 'error' }

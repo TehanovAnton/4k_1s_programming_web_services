@@ -20,11 +20,7 @@
     } else {
       studentsWl.value = { Name: 'error' }
     }
-  }
-
-  const studentShow = (studentId, studentLink) => {
-    router.push({ name: 'student', params: { id: studentId, link: studentLink } })
-  }
+  }  
 
   const newView = () => {
     router.push({ name: 'createStudent', params: { postStudentUrl: 'http://localhost:50369/api/students/' } });
@@ -37,7 +33,6 @@
   <ul>
     <li v-for="studentWL in studentsWl">
       <p>Id:{{ studentWL.Student.Id }}; Name:{{ studentWL.Student.Name }}; Phone:{{ studentWL.Student.Phone }}</p>
-      <button @click="studentShow(studentWL.Student.Id, studentWL.GetUrl)">Show</button>
     </li>
   </ul>
 </template>

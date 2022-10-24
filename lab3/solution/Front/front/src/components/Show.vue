@@ -12,8 +12,7 @@
   const studentWL = ref({})
   const route = useRoute();
   const student = computed(() => {
-    debugger
-    return props.student ? props.student.Student : studentWL.value.Student;
+    return props.student;
   });
 
   onBeforeMount(async () => {
@@ -43,11 +42,7 @@
   }
 
   const studentUrl = computed(() => {
-    if (props.student) {
-      return props.student.GetUrl
-    } else {
-      return route.params.link;
-    }
+    return props.student.GetUrl
   })
 
   const fetchStudent = async () => {
@@ -57,10 +52,6 @@
       console.log(error)
     })
 
-    setStudentByResponse(response)
-  }
-
-  const setStudentByResponse = (response) => {
     if (response.status == 200) {      
       studentWL.value = JSON.parse(response.data)
     } else {
@@ -71,7 +62,7 @@
 </script>
   
 <template>
-    <StudentForm v-if="student" :action="updateStudent" action-name="Update" :new-stud="student"/>
+    <StudentForm :action="updateStudent" action-name="Update" :new-stud="student.Student"/>
 
     <button @click="destroyStudent">Destroy</button>
 </template>
