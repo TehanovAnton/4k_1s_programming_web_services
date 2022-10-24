@@ -70,7 +70,7 @@ import { useRoute } from 'vue-router';
 
 <template>
   <p v-if="fetched">
-    <Show :student="currentStudentWl"/>
+    <Show :in-student="currentStudentWl"/>
   </p>
   <button @click="previousStudent">previous</button> - 
   <button @click="nextStudent">next</button>

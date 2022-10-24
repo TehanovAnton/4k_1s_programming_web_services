@@ -6,14 +6,17 @@
   import { useRoute } from 'vue-router';
 
   const props = defineProps([
-    'student'
+    'inStudent'
   ]);
 
   const studentWL = ref({})
   const route = useRoute();
-  const student = computed(() => {
-    return props.student;
+  const propStudent = computed(() => {
+    return props.inStudent;
   });
+  const student = computed(() => {
+    return props.inStudent.Student;
+  }) 
 
   onBeforeMount(async () => {
     await fetchStudent()    
@@ -23,7 +26,7 @@
     await axios.put(studentWL.value.UpdateUrl, {
       Name: student.value.Name,
       Phone: student.value.Phone,
-      Id: student.Id
+      Id: student.value.Id
     })
     .catch(error => {
       console.log(error)
@@ -38,15 +41,14 @@
       console.log(error)
     })
 
-    router.push({ name:'students' })
+    studentsListView();
   }
 
   const studentUrl = computed(() => {
-    return props.student.GetUrl
+    return props.inStudent.GetUrl
   })
 
   const fetchStudent = async () => {
-    debugger
     let response = await axios.get(studentUrl.value)
     .catch(error => {
       console.log(error)
@@ -59,11 +61,20 @@
       return {}
     }
   }
+
+  const studentsListView = () => {
+    router.push({ name: 'students' })
+  }
 </script>
   
 <template>
-    <StudentForm :action="updateStudent" action-name="Update" :new-stud="student.Student"/>
+  <button v-on:click="studentsListView">Students List</button>
 
-    <button @click="destroyStudent">Destroy</button>
+  <p v-if="student">
+    {{ student.Id }} - {{ student.Name }} - {{ student.Phone }}
+  </p>
+  <StudentForm :action="updateStudent" action-name="Update" :new-stud="student"/>
+
+  <button @click="destroyStudent">Destroy</button>
 </template>
   
