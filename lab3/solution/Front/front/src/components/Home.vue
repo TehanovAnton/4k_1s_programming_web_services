@@ -3,7 +3,13 @@
   import router from "../router/router";
   import axios from 'axios'
 
-  const studentsWl = ref({})  
+  const studentsWl = ref({});
+  const filters = ref({ limit: '' })
+  const filtersHash = computed(() => {
+    return {
+        limit: filters.value.limit
+    }
+  });
 
   onBeforeMount(async () => {
     await fetchStudents()
@@ -11,7 +17,7 @@
   
   async function fetchStudents () {
     let studentsUrl = `http://localhost:50369/api/students.json/`
-    let response = await axios.get(studentsUrl)
+    let response = await axios.get(studentsUrl, { params: filtersHash.value })
     .catch(error => {
       console.log(error)
     })
@@ -31,8 +37,20 @@
 </script>
 
 <template>
-  <button v-on:click="newView">Create New!</button>
-  <button v-on:click="studensView">Each Student</button>
+  <p>
+    <button v-on:click="newView">Create New!</button>
+    <button v-on:click="studensView">Each Student</button>
+  </p>
+
+  <label for="filterForm">Filters</label>
+  <form action="" id="filterForm">
+    <p>
+        <label for="limit"></label>
+        <input type="number" v-model="filters.limit" id="limit" name="limit" placeholder="limit">
+    </p>
+
+    <button type="button" @click="fetchStudents()">apply</button>
+  </form>
   
   <ul>
     <li v-for="studentWL in studentsWl">
