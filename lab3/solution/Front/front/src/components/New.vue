@@ -6,7 +6,7 @@
 
     const route = useRoute()
     const postStudentUrl = ref('');
-    const newStud = ref({ name: '', phone: '' })
+    const newStud = ref({ Name: '', Phone: '' })
     
 
     onBeforeMount(async () => {
@@ -15,8 +15,8 @@
     
     const createStudent = async () => {
         let response = await axios.post(postStudentUrl.value, {
-            Name: newStud.value.name,
-            Phone: newStud.value.phone,
+            Name: newStud.value.Name,
+            Phone: newStud.value.Phone,
         }).catch(error => {
         console.log(error)
         })
@@ -28,5 +28,5 @@
 </script>
 
 <template>
-    <StudentForm :action="createStudent" action-name="Create" :newStud="newStud"/>
+    <StudentForm :action="createStudent" action-name="Create" :new-stud="newStud"/>
 </template>

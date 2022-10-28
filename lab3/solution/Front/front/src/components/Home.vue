@@ -4,10 +4,11 @@
   import axios from 'axios'
 
   const studentsWl = ref({});
-  const filters = ref({ limit: '' })
+  const filters = ref({ limit: '', sort: '' })
   const filtersHash = computed(() => {
     return {
-        limit: filters.value.limit
+        limit: filters.value.limit,
+        sort: filters.value.sort
     }
   });
 
@@ -45,8 +46,13 @@
   <label for="filterForm">Filters</label>
   <form action="" id="filterForm">
     <p>
-        <label for="limit"></label>
-        <input type="number" v-model="filters.limit" id="limit" name="limit" placeholder="limit">
+        <label for="limit">limit:</label>
+        <input type="number" v-model="filters.limit" id="limit" name="limit">
+    </p>
+
+    <p>
+        <label for="sort">sort:</label>
+        <input type="checkbox" v-model="filters.sort" name="sort" id="sort">
     </p>
 
     <button type="button" @click="fetchStudents()">apply</button>

@@ -15,6 +15,7 @@
     return props.inStudent;
   });
   const student = computed(() => {
+    studentWL.value = props.inStudent;
     return props.inStudent.Student;
   }) 
 
@@ -36,6 +37,7 @@
   }
 
   const destroyStudent = async () => {
+    debugger
     await axios.delete(studentWL.value.DestroyUrl)
     .catch(error => {
       console.log(error)
