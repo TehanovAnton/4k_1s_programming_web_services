@@ -2,13 +2,16 @@
   import { onBeforeMount, ref, computed } from 'vue'
   import router from "../router/router";
   import axios from 'axios'
+  import { useFiltersStore } from '../stores/filters'
 
   const studentsWl = ref({});
-  const filters = ref({ limit: '', sort: '' })
+  const filters = useFiltersStore()
   const filtersHash = computed(() => {
     return {
-        limit: filters.value.limit,
-        sort: filters.value.sort
+        limit: filters.state.limit,
+        sort: filters.state.sort,
+        minId: filters.state.minId,
+        maxId: filters.state.maxId
     }
   });
 
@@ -35,6 +38,7 @@
   const studensView = () => {
     router.push({ name: 'student' })
   }
+
 </script>
 
 <template>
@@ -47,12 +51,20 @@
   <form action="" id="filterForm">
     <p>
         <label for="limit">limit:</label>
-        <input type="number" v-model="filters.limit" id="limit" name="limit">
+        <input type="number" v-model="filters.state.limit" id="limit" name="limit">
     </p>
 
     <p>
         <label for="sort">sort:</label>
-        <input type="checkbox" v-model="filters.sort" name="sort" id="sort">
+        <input type="checkbox" v-model="filters.state.sort" name="sort" id="sort">
+    </p>
+
+    <p>
+        <label for="minId">MinId:</label>
+        <input id="minId" type="text" v-model="filters.state.minId" required/> - 
+
+        <label for="maxId">MaxId:</label>
+        <input id="maxId" type="text" v-model="filters.state.maxId" required/>
     </p>
 
     <button type="button" @click="fetchStudents()">apply</button>
