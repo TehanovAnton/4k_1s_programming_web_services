@@ -1,8 +1,27 @@
 import { defineStore } from "pinia"
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 
 export const useFiltersStore = defineStore('filters', () => {
-    const state = ref({ limit: '', sort: '', offset: '', minId: '', maxId: '', like: '', globallike: '' });
+  const columns = ref({ id: true, name: true, phone: true })  
 
-    return { state }
+  const columnAttribute = (presence, value) => {
+    return presence ? value : ''
+  }
+  
+  const state = ref({ 
+    limit: '', 
+    sort: '', 
+    offset: '', 
+    minId: '', 
+    maxId: '', 
+    like: '', 
+    globallike: '',
+    columns: computed(() => {
+      return `${columnAttribute(columns.value.id, 'Id')},` +
+             `${columnAttribute(columns.value.name, 'Name')},` +
+             `${columnAttribute(columns.value.phone, 'Phone')}`
+    })
+  });
+
+  return { state, columns }
 })
