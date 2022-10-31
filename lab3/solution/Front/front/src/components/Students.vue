@@ -39,7 +39,6 @@
   
   async function fetchStudents () {
     let studentsUrl = `http://localhost:50369/api/students.json/`
-    debugger
     let response = await axios.get(studentsUrl, { params: filterStore.state })
     .catch(error => {
       console.log(error)
