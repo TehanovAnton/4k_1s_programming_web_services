@@ -64,6 +64,16 @@
         <input type="number" v-model="filters.state.offset" required>
     </p>
 
+    <p>
+        <label for="like">like:</label>
+        <input type="text" v-model="filters.state.like" required>
+    </p>
+    
+    <p>
+        <label for="globallike">globallike:</label>
+        <input type="text" v-model="filters.state.globallike" required>
+    </p>
+
     <button type="button" @click="fetchStudents()">apply</button>
   </form>
   
