@@ -36,10 +36,15 @@
     router.push({ name: 'student' })
   }
 
+  const xmlView = () => {
+    router.push({ name: 'studentsXml' });
+  }
+
 </script>
 
 <template>
   <p>
+    <button v-on:click="xmlView">Xml Output</button>
     <button v-on:click="newView">Create New!</button>
     <button v-on:click="studensView">Each Student</button>
   </p>
