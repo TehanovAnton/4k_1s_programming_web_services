@@ -22,6 +22,11 @@ const router = createRouter({
       path: '/students/xml',
       name: 'studentsXml',
       component: () => import('../views/StudentsXmlView.vue')
+    },
+    {
+      path: '/students/errors',
+      name: 'errors',
+      component: () => import('../views/ErrorView.vue')
     }
   ]
 })
