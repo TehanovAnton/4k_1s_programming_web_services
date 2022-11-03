@@ -16,5 +16,11 @@ namespace solution
         {
             return x + y;
         }
+
+        [WebMethod(MessageName = "sum_2", Description = "Concatination of string and double")]
+        public string Concat(string s, double d)
+        {
+            return s + " " + d.ToString();
+        }
     }
 }
