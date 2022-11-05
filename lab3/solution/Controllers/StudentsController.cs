@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using solution.DataBase;
 using solution.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace solution.Controllers
             if (limit.HasValue)
                 students = students.Take(limit.Value).ToList();
 
-            if (!string.IsNullOrEmpty(sort))
+            if (!string.IsNullOrEmpty(sort) && bool.Parse(sort))
                 students = students.OrderBy(stud => stud.Student.Name).ToList();
 
             if (!string.IsNullOrEmpty(like))
@@ -56,7 +57,7 @@ namespace solution.Controllers
             if (maxid.HasValue)
                 students = students.Where(stud => stud.Id <= maxid.Value).ToList();            
 
-            return JsonResponse(request, SerializeStudents(extension, students));
+            return JsonResponse(request, HttpStatusCode.OK, extension, SerializeStudents(extension, students));
         }
 
         // GET api/students/5        
@@ -70,12 +71,23 @@ namespace solution.Controllers
 
         // POST api/values
         [Route("students")]
-        public async void Post(HttpRequestMessage request)
+        public async Task<HttpResponseMessage> Post(HttpRequestMessage request)
         {
             string json = await requesBodyJson(request);
             StudProto student = JsonConvert.DeserializeObject<StudProto>(json);
 
+            if (student.Name == "" || student.Phone == "")
+            {
+                ErrorWL error = new ErrorWL(1);
+                return JsonResponse(request, HttpStatusCode.OK, "json", JsonConvert.SerializeObject(error));
+            }
+
             DB.AddRecord(student.Name, student.Phone);
+
+            Student createdStudent = DB.GetAll()
+                                       .Find((s) => s.Name.Equals(student.Name) && s.Phone.Equals(student.Phone));
+
+            return JsonResponse(request, HttpStatusCode.OK, "json", JsonConvert.SerializeObject(createdStudent));
         }
 
         // PUT api/students/5
@@ -100,14 +112,15 @@ namespace solution.Controllers
         private async Task<string> requesBodyJson(HttpRequestMessage request)
         {
             string json = await request.Content.ReadAsStringAsync();
-
             return json;
         }
 
-        private HttpResponseMessage JsonResponse(HttpRequestMessage request, string body = null)
+        private HttpResponseMessage JsonResponse(HttpRequestMessage request, HttpStatusCode statusCode, string type, string body = null)
         {
-            HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, body);
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            HttpResponseMessage response = request.CreateResponse(statusCode, body);
+
+            string extension = string.Format("application/{0}", type);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue(extension);
 
             return response;
         }

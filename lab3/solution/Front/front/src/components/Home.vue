@@ -5,15 +5,11 @@
   import { useFiltersStore } from '../stores/filters'
 
   const studentsWl = ref({});
-  const filters = useFiltersStore()
-  const filtersHash = computed(() => {
-    return {
-        limit: filters.state.limit,
-        sort: filters.state.sort,
-        minId: filters.state.minId,
-        maxId: filters.state.maxId
-    }
+  const filters = useFiltersStore();
+  const filterColumns = computed(() => {
+    return filters.columns;
   });
+
 
   onBeforeMount(async () => {
     await fetchStudents()
@@ -21,7 +17,8 @@
   
   async function fetchStudents () {
     let studentsUrl = `http://localhost:50369/api/students.json/`
-    let response = await axios.get(studentsUrl, { params: filtersHash.value })
+
+    let response = await axios.get(studentsUrl, { params: filters.state })
     .catch(error => {
       console.log(error)
     })
@@ -39,10 +36,15 @@
     router.push({ name: 'student' })
   }
 
+  const xmlView = () => {
+    router.push({ name: 'studentsXml' });
+  }
+
 </script>
 
 <template>
   <p>
+    <button v-on:click="xmlView">Xml Output</button>
     <button v-on:click="newView">Create New!</button>
     <button v-on:click="studensView">Each Student</button>
   </p>
@@ -51,20 +53,42 @@
   <form action="" id="filterForm">
     <p>
         <label for="limit">limit:</label>
-        <input type="number" v-model="filters.state.limit" id="limit" name="limit">
+        <input type="number" v-model="filters.state.limit" id="limit" name="limit" />
     </p>
 
     <p>
         <label for="sort">sort:</label>
-        <input type="checkbox" v-model="filters.state.sort" name="sort" id="sort">
+        <input type="checkbox" v-model="filters.state.sort" name="sort" id="sort" />
     </p>
 
     <p>
         <label for="minId">MinId:</label>
-        <input id="minId" type="text" v-model="filters.state.minId" required/> - 
+        <input id="minId" type="text" v-model="filters.state.minId" required /> - 
 
         <label for="maxId">MaxId:</label>
-        <input id="maxId" type="text" v-model="filters.state.maxId" required/>
+        <input id="maxId" type="text" v-model="filters.state.maxId" required />
+    </p>
+
+    <p>
+        <label for="offset">offset:</label>
+        <input type="number" v-model="filters.state.offset" required  />
+    </p>
+
+    <p>
+        <label for="like">like:</label>
+        <input type="text" v-model="filters.state.like" required />
+    </p>
+    
+    <p>
+        <label for="globallike">globallike:</label>
+        <input type="text" v-model="filters.state.globallike" required />
+    </p>
+
+    <p>
+        <label for="columns">columns:</label>
+        <input type="checkbox" v-model="filterColumns.id" />
+        <input type="checkbox" v-model="filterColumns.name" />
+        <input type="checkbox" v-model="filterColumns.phone" />
     </p>
 
     <button type="button" @click="fetchStudents()">apply</button>
