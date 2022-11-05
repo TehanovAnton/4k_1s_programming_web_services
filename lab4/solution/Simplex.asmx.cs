@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Web.Script.Services;
 
-namespace solution
+namespace solution.Local
 {
     [WebService(Namespace = "http://tav/", Description = "Simplex Service")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]

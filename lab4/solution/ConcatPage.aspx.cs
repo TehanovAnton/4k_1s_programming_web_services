@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+//using solution.Proxy;
 
 namespace solution
 {
@@ -12,7 +13,7 @@ namespace solution
         private Simplex proxyClient;
         protected void Page_Load(object sender, EventArgs e)
         {
-            proxyClient = new Simplex();
+            proxyClient = new Simplex();    
         }
 
         protected void concat_Click(object sender, EventArgs e)
