@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Web.Script.Services;
 
-namespace solution.Local
+namespace solution
 {
     [WebService(Namespace = "http://tav/", Description = "Simplex Service")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -21,6 +21,13 @@ namespace solution.Local
         public string Concat(string s, double d)
         {
             return s + " " + d.ToString();
+        }
+
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        [WebMethod(MessageName = "sum_3", Description = "Sum of 2 int. Response JSON")]
+        public int Adds(int x, int y)
+        {
+            return x + y;
         }
     }
 }

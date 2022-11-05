@@ -27,9 +27,19 @@ namespace WinFormsApp1
         }
 
         // add
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            int val1;
+            int val2;
 
+            if (int.TryParse(param2.Text.ToString(), out val1) && int.TryParse(param2.Text.ToString(), out val2))
+            {
+                result.Text = (await proxyClient.AddAsync(val1, val2)).sum_1Result.ToString();
+            }
+            else
+            {
+                result.Text = "Error!";
+            }
         }
 
         // concat
