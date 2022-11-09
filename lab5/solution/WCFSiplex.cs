@@ -7,7 +7,7 @@ using System.Text;
 
 namespace solution
 {
-    public class WCFSimplex : IWCFSimplex
+    public class WCFSiplex : IWCFSiplex
     {
         public string GetData(int value)
         {

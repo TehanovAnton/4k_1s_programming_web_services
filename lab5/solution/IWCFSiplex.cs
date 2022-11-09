@@ -8,7 +8,7 @@ using System.Text;
 namespace solution
 {
     [ServiceContract]
-    public interface IWCFSimplex
+    public interface IWCFSiplex
     {
         [OperationContract]
         string GetData(int value);
