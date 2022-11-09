@@ -12,7 +12,7 @@
          <div>
             <asp:TextBox runat="server" ID="x" />
             <asp:TextBox runat="server" ID="y" />
-            <asp:Button runat="server" ID="concat" OnClick="add_Click" Text="Add" />
+            <asp:Button runat="server" ID="Add" OnClick="add_Click" Text="Add" />
         </div>
         <div>
             <asp:TextBox runat="server" ID="result" />

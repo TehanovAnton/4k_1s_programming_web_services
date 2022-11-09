@@ -24,67 +24,67 @@ namespace WebApplication1
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// x_intParam1 элемент управления.
+        /// x_s элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox x_intParam1;
+        protected global::System.Web.UI.WebControls.TextBox x_s;
 
         /// <summary>
-        /// x_intParam2 элемент управления.
+        /// x_k элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox x_intParam2;
+        protected global::System.Web.UI.WebControls.TextBox x_k;
 
         /// <summary>
-        /// x_strParam элемент управления.
+        /// x_f элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox x_strParam;
+        protected global::System.Web.UI.WebControls.TextBox x_f;
 
         /// <summary>
-        /// y_intParam1 элемент управления.
+        /// y_s элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox y_intParam1;
+        protected global::System.Web.UI.WebControls.TextBox y_s;
 
         /// <summary>
-        /// y_intParam2 элемент управления.
+        /// y_k элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox y_intParam2;
+        protected global::System.Web.UI.WebControls.TextBox y_k;
 
         /// <summary>
-        /// y_strParam элемент управления.
+        /// y_f элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox y_strParam;
+        protected global::System.Web.UI.WebControls.TextBox y_f;
 
         /// <summary>
-        /// concat элемент управления.
+        /// get_sum элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button concat;
+        protected global::System.Web.UI.WebControls.Button get_sum;
 
         /// <summary>
         /// result элемент управления.
