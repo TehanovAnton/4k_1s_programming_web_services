@@ -42,13 +42,13 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.TextBox y;
 
         /// <summary>
-        /// add элемент управления.
+        /// concat элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button add;
+        protected global::System.Web.UI.WebControls.Button concat;
 
         /// <summary>
         /// result элемент управления.
