@@ -8,7 +8,7 @@
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, ServiceReference2"
+      "*, ServiceReference4"
     ],
     "targetFramework": "net5.0",
     "typeReuseMode": "All"

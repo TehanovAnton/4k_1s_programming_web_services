@@ -29,7 +29,7 @@
                     y: parseInt($("#y").val())
                 };
                 $.ajax({
-                    url: "Simplex.asmx/sum_3",
+                    url: "Simplex.asmx/adds",
                     type: "GET",
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",

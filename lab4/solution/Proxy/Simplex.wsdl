@@ -3,7 +3,7 @@
   <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Simplex Service</wsdl:documentation>
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tav/">
-      <s:element name="sum_1">
+      <s:element name="add">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="x" type="s:int" />
@@ -11,14 +11,14 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="sum_1Response">
+      <s:element name="addResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="sum_1Result" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="addResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="sum_2">
+      <s:element name="concat">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="s" type="s:string" />
@@ -26,56 +26,133 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="sum_2Response">
+      <s:element name="concatResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="sum_2Result" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="concatResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="msu1" type="tns:A" />
+            <s:element minOccurs="0" maxOccurs="1" name="msu2" type="tns:A" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="A">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="s" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="k" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="f" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="sumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sumResult" type="tns:A" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="adds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="x" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="y" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addsResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="sum_1SoapIn">
-    <wsdl:part name="parameters" element="tns:sum_1" />
+  <wsdl:message name="addSoapIn">
+    <wsdl:part name="parameters" element="tns:add" />
   </wsdl:message>
-  <wsdl:message name="sum_1SoapOut">
-    <wsdl:part name="parameters" element="tns:sum_1Response" />
+  <wsdl:message name="addSoapOut">
+    <wsdl:part name="parameters" element="tns:addResponse" />
   </wsdl:message>
-  <wsdl:message name="sum_2SoapIn">
-    <wsdl:part name="parameters" element="tns:sum_2" />
+  <wsdl:message name="concatSoapIn">
+    <wsdl:part name="parameters" element="tns:concat" />
   </wsdl:message>
-  <wsdl:message name="sum_2SoapOut">
-    <wsdl:part name="parameters" element="tns:sum_2Response" />
+  <wsdl:message name="concatSoapOut">
+    <wsdl:part name="parameters" element="tns:concatResponse" />
+  </wsdl:message>
+  <wsdl:message name="sumSoapIn">
+    <wsdl:part name="parameters" element="tns:sum" />
+  </wsdl:message>
+  <wsdl:message name="sumSoapOut">
+    <wsdl:part name="parameters" element="tns:sumResponse" />
+  </wsdl:message>
+  <wsdl:message name="addsSoapIn">
+    <wsdl:part name="parameters" element="tns:adds" />
+  </wsdl:message>
+  <wsdl:message name="addsSoapOut">
+    <wsdl:part name="parameters" element="tns:addsResponse" />
   </wsdl:message>
   <wsdl:portType name="SimplexSoap">
     <wsdl:operation name="Add">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sum of 2 int</wsdl:documentation>
-      <wsdl:input name="sum_1" message="tns:sum_1SoapIn" />
-      <wsdl:output name="sum_1" message="tns:sum_1SoapOut" />
+      <wsdl:input name="add" message="tns:addSoapIn" />
+      <wsdl:output name="add" message="tns:addSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Concat">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Concatination of string and double</wsdl:documentation>
-      <wsdl:input name="sum_2" message="tns:sum_2SoapIn" />
-      <wsdl:output name="sum_2" message="tns:sum_2SoapOut" />
+      <wsdl:input name="concat" message="tns:concatSoapIn" />
+      <wsdl:output name="concat" message="tns:concatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sum">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sum of 2 A instances. Response JSON</wsdl:documentation>
+      <wsdl:input name="sum" message="tns:sumSoapIn" />
+      <wsdl:output name="sum" message="tns:sumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Adds">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sum of 2 int. Response JSON</wsdl:documentation>
+      <wsdl:input name="adds" message="tns:addsSoapIn" />
+      <wsdl:output name="adds" message="tns:addsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SimplexSoap" type="tns:SimplexSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Add">
-      <soap:operation soapAction="http://tav/sum_1" style="document" />
-      <wsdl:input name="sum_1">
+      <soap:operation soapAction="http://tav/add" style="document" />
+      <wsdl:input name="add">
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="sum_1">
+      <wsdl:output name="add">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Concat">
-      <soap:operation soapAction="http://tav/sum_2" style="document" />
-      <wsdl:input name="sum_2">
+      <soap:operation soapAction="http://tav/concat" style="document" />
+      <wsdl:input name="concat">
         <soap:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="sum_2">
+      <wsdl:output name="concat">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sum">
+      <soap:operation soapAction="http://tav/sum" style="document" />
+      <wsdl:input name="sum">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sum">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Adds">
+      <soap:operation soapAction="http://tav/adds" style="document" />
+      <wsdl:input name="adds">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="adds">
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -83,20 +160,38 @@
   <wsdl:binding name="SimplexSoap12" type="tns:SimplexSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Add">
-      <soap12:operation soapAction="http://tav/sum_1" style="document" />
-      <wsdl:input name="sum_1">
+      <soap12:operation soapAction="http://tav/add" style="document" />
+      <wsdl:input name="add">
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="sum_1">
+      <wsdl:output name="add">
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Concat">
-      <soap12:operation soapAction="http://tav/sum_2" style="document" />
-      <wsdl:input name="sum_2">
+      <soap12:operation soapAction="http://tav/concat" style="document" />
+      <wsdl:input name="concat">
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output name="sum_2">
+      <wsdl:output name="concat">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sum">
+      <soap12:operation soapAction="http://tav/sum" style="document" />
+      <wsdl:input name="sum">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sum">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Adds">
+      <soap12:operation soapAction="http://tav/adds" style="document" />
+      <wsdl:input name="adds">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="adds">
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

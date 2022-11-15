@@ -7,27 +7,86 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiceReference2
+namespace ServiceReference3
 {
+    using System.Runtime.Serialization;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="A", Namespace="http://tav/")]
+    public partial class A : object
+    {
+        
+        private string sField;
+        
+        private int kField;
+        
+        private float fField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string s
+        {
+            get
+            {
+                return this.sField;
+            }
+            set
+            {
+                this.sField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public int k
+        {
+            get
+            {
+                return this.kField;
+            }
+            set
+            {
+                this.kField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public float f
+        {
+            get
+            {
+                return this.fField;
+            }
+            set
+            {
+                this.fField = value;
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tav/", ConfigurationName="ServiceReference2.SimplexSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://tav/", ConfigurationName="ServiceReference3.SimplexSoap")]
     public interface SimplexSoap
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tav/sum_1", ReplyAction="*")]
-        System.Threading.Tasks.Task<ServiceReference2.sum_11> AddAsync(ServiceReference2.sum_1 request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tav/add", ReplyAction="*")]
+        System.Threading.Tasks.Task<ServiceReference3.add1> AddAsync(ServiceReference3.add request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tav/sum_2", ReplyAction="*")]
-        System.Threading.Tasks.Task<ServiceReference2.sum_21> ConcatAsync(ServiceReference2.sum_2 request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tav/concat", ReplyAction="*")]
+        System.Threading.Tasks.Task<ServiceReference3.concat1> ConcatAsync(ServiceReference3.concat request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tav/sum", ReplyAction="*")]
+        System.Threading.Tasks.Task<ServiceReference3.sum1> SumAsync(ServiceReference3.sum request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tav/adds", ReplyAction="*")]
+        System.Threading.Tasks.Task<ServiceReference3.adds1> AddsAsync(ServiceReference3.adds request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="sum_1", WrapperNamespace="http://tav/", IsWrapped=true)]
-    public partial class sum_1
+    [System.ServiceModel.MessageContractAttribute(WrapperName="add", WrapperNamespace="http://tav/", IsWrapped=true)]
+    public partial class add
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=0)]
@@ -36,11 +95,11 @@ namespace ServiceReference2
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=1)]
         public int y;
         
-        public sum_1()
+        public add()
         {
         }
         
-        public sum_1(int x, int y)
+        public add(int x, int y)
         {
             this.x = x;
             this.y = y;
@@ -50,28 +109,28 @@ namespace ServiceReference2
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="sum_1Response", WrapperNamespace="http://tav/", IsWrapped=true)]
-    public partial class sum_11
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addResponse", WrapperNamespace="http://tav/", IsWrapped=true)]
+    public partial class add1
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=0)]
-        public int sum_1Result;
+        public int addResult;
         
-        public sum_11()
+        public add1()
         {
         }
         
-        public sum_11(int sum_1Result)
+        public add1(int addResult)
         {
-            this.sum_1Result = sum_1Result;
+            this.addResult = addResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="sum_2", WrapperNamespace="http://tav/", IsWrapped=true)]
-    public partial class sum_2
+    [System.ServiceModel.MessageContractAttribute(WrapperName="concat", WrapperNamespace="http://tav/", IsWrapped=true)]
+    public partial class concat
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=0)]
@@ -80,11 +139,11 @@ namespace ServiceReference2
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=1)]
         public double d;
         
-        public sum_2()
+        public concat()
         {
         }
         
-        public sum_2(string s, double d)
+        public concat(string s, double d)
         {
             this.s = s;
             this.d = d;
@@ -94,31 +153,119 @@ namespace ServiceReference2
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="sum_2Response", WrapperNamespace="http://tav/", IsWrapped=true)]
-    public partial class sum_21
+    [System.ServiceModel.MessageContractAttribute(WrapperName="concatResponse", WrapperNamespace="http://tav/", IsWrapped=true)]
+    public partial class concat1
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=0)]
-        public string sum_2Result;
+        public string concatResult;
         
-        public sum_21()
+        public concat1()
         {
         }
         
-        public sum_21(string sum_2Result)
+        public concat1(string concatResult)
         {
-            this.sum_2Result = sum_2Result;
+            this.concatResult = concatResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="sum", WrapperNamespace="http://tav/", IsWrapped=true)]
+    public partial class sum
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=0)]
+        public ServiceReference3.A msu1;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=1)]
+        public ServiceReference3.A msu2;
+        
+        public sum()
+        {
+        }
+        
+        public sum(ServiceReference3.A msu1, ServiceReference3.A msu2)
+        {
+            this.msu1 = msu1;
+            this.msu2 = msu2;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="sumResponse", WrapperNamespace="http://tav/", IsWrapped=true)]
+    public partial class sum1
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=0)]
+        public ServiceReference3.A sumResult;
+        
+        public sum1()
+        {
+        }
+        
+        public sum1(ServiceReference3.A sumResult)
+        {
+            this.sumResult = sumResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="adds", WrapperNamespace="http://tav/", IsWrapped=true)]
+    public partial class adds
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=0)]
+        public int x;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=1)]
+        public int y;
+        
+        public adds()
+        {
+        }
+        
+        public adds(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addsResponse", WrapperNamespace="http://tav/", IsWrapped=true)]
+    public partial class adds1
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tav/", Order=0)]
+        public int addsResult;
+        
+        public adds1()
+        {
+        }
+        
+        public adds1(int addsResult)
+        {
+            this.addsResult = addsResult;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    public interface SimplexSoapChannel : ServiceReference2.SimplexSoap, System.ServiceModel.IClientChannel
+    public interface SimplexSoapChannel : ServiceReference3.SimplexSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    public partial class SimplexSoapClient : System.ServiceModel.ClientBase<ServiceReference2.SimplexSoap>, ServiceReference2.SimplexSoap
+    public partial class SimplexSoapClient : System.ServiceModel.ClientBase<ServiceReference3.SimplexSoap>, ServiceReference3.SimplexSoap
     {
         
         /// <summary>
@@ -153,37 +300,61 @@ namespace ServiceReference2
                 base(binding, remoteAddress)
         {
         }
-
-        public SimplexSoapClient()
-        {
-        }
-
+        
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ServiceReference2.sum_11> ServiceReference2.SimplexSoap.AddAsync(ServiceReference2.sum_1 request)
+        System.Threading.Tasks.Task<ServiceReference3.add1> ServiceReference3.SimplexSoap.AddAsync(ServiceReference3.add request)
         {
             return base.Channel.AddAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ServiceReference2.sum_11> AddAsync(int x, int y)
+        public System.Threading.Tasks.Task<ServiceReference3.add1> AddAsync(int x, int y)
         {
-            ServiceReference2.sum_1 inValue = new ServiceReference2.sum_1();
+            ServiceReference3.add inValue = new ServiceReference3.add();
             inValue.x = x;
             inValue.y = y;
-            return ((ServiceReference2.SimplexSoap)(this)).AddAsync(inValue);
+            return ((ServiceReference3.SimplexSoap)(this)).AddAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ServiceReference2.sum_21> ServiceReference2.SimplexSoap.ConcatAsync(ServiceReference2.sum_2 request)
+        System.Threading.Tasks.Task<ServiceReference3.concat1> ServiceReference3.SimplexSoap.ConcatAsync(ServiceReference3.concat request)
         {
             return base.Channel.ConcatAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ServiceReference2.sum_21> ConcatAsync(string s, double d)
+        public System.Threading.Tasks.Task<ServiceReference3.concat1> ConcatAsync(string s, double d)
         {
-            ServiceReference2.sum_2 inValue = new ServiceReference2.sum_2();
+            ServiceReference3.concat inValue = new ServiceReference3.concat();
             inValue.s = s;
             inValue.d = d;
-            return ((ServiceReference2.SimplexSoap)(this)).ConcatAsync(inValue);
+            return ((ServiceReference3.SimplexSoap)(this)).ConcatAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ServiceReference3.sum1> ServiceReference3.SimplexSoap.SumAsync(ServiceReference3.sum request)
+        {
+            return base.Channel.SumAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ServiceReference3.sum1> SumAsync(ServiceReference3.A msu1, ServiceReference3.A msu2)
+        {
+            ServiceReference3.sum inValue = new ServiceReference3.sum();
+            inValue.msu1 = msu1;
+            inValue.msu2 = msu2;
+            return ((ServiceReference3.SimplexSoap)(this)).SumAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ServiceReference3.adds1> ServiceReference3.SimplexSoap.AddsAsync(ServiceReference3.adds request)
+        {
+            return base.Channel.AddsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ServiceReference3.adds1> AddsAsync(int x, int y)
+        {
+            ServiceReference3.adds inValue = new ServiceReference3.adds();
+            inValue.x = x;
+            inValue.y = y;
+            return ((ServiceReference3.SimplexSoap)(this)).AddsAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

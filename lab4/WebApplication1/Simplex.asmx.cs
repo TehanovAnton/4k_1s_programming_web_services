@@ -1,33 +1,39 @@
-﻿using System.Web.Services;
-using System.ComponentModel;
-using System.Web.Script.Services;
-using System.Threading.Tasks;
-using System.Web;
+﻿using solution.server;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Script.Services;
+using System.Web.Services;
 
-namespace solution
+namespace WebApplication1
 {
-    [WebService(Namespace = "http://tav/", Description = "Simplex Service")]
+    /// <summary>
+    /// Сводное описание для Simplex
+    /// </summary>
+    [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    [ToolboxItem(false)]
-    [ScriptService]
-    public class Simplex : WebService
+    [System.ComponentModel.ToolboxItem(false)]
+    // Чтобы разрешить вызывать веб-службу из скрипта с помощью ASP.NET AJAX, раскомментируйте следующую строку. 
+    // [System.Web.Script.Services.ScriptService]
+    public class Simplex : solution.server.Simplex
     {
 
         [WebMethod(MessageName = "add", Description = "Sum of 2 int")]
-        public int Add(int x, int y)
+        public override int Add(int x, int y)
         {
             return x + y;
         }
 
         [WebMethod(MessageName = "concat", Description = "Concatination of string and double")]
-        public string Concat(string s, double d)
+        public override string Concat(string s, double d)
         {
             return s + " " + d.ToString();
         }
 
         [WebMethod(MessageName = "sum", Description = "Sum of 2 A instances. Response JSON")]
-        public A Sum(A msu1, A msu2)
+        public override A Sum(A msu1, A msu2)
         {
             string body = requestBody(Context.Request);
             A a = new A();
@@ -39,7 +45,7 @@ namespace solution
 
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
         [WebMethod(MessageName = "adds", Description = "Sum of 2 int. Response JSON")]
-        public int Adds(int x, int y)
+        public override int Adds(int x, int y)
         {
             return x + y;
         }

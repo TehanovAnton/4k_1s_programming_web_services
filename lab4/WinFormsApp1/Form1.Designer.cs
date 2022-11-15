@@ -29,26 +29,29 @@ namespace WinFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.param1 = new System.Windows.Forms.TextBox();
-            this.param2 = new System.Windows.Forms.TextBox();
+            this.x_k = new System.Windows.Forms.TextBox();
+            this.x_f = new System.Windows.Forms.TextBox();
             this.result = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.sum = new System.Windows.Forms.Button();
+            this.y_f = new System.Windows.Forms.TextBox();
+            this.y_k = new System.Windows.Forms.TextBox();
+            this.x_s = new System.Windows.Forms.TextBox();
+            this.y_s = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // param1
+            // x_k
             // 
-            this.param1.Location = new System.Drawing.Point(170, 88);
-            this.param1.Name = "param1";
-            this.param1.Size = new System.Drawing.Size(125, 27);
-            this.param1.TabIndex = 0;
+            this.x_k.Location = new System.Drawing.Point(170, 88);
+            this.x_k.Name = "x_k";
+            this.x_k.Size = new System.Drawing.Size(125, 27);
+            this.x_k.TabIndex = 0;
             // 
-            // param2
+            // x_f
             // 
-            this.param2.Location = new System.Drawing.Point(170, 121);
-            this.param2.Name = "param2";
-            this.param2.Size = new System.Drawing.Size(125, 27);
-            this.param2.TabIndex = 1;
+            this.x_f.Location = new System.Drawing.Point(170, 121);
+            this.x_f.Name = "x_f";
+            this.x_f.Size = new System.Drawing.Size(125, 27);
+            this.x_f.TabIndex = 1;
             // 
             // result
             // 
@@ -57,36 +60,58 @@ namespace WinFormsApp1
             this.result.Size = new System.Drawing.Size(125, 27);
             this.result.TabIndex = 2;
             // 
-            // button1
+            // sum
             // 
-            this.button1.Location = new System.Drawing.Point(301, 121);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.sum.Location = new System.Drawing.Point(313, 154);
+            this.sum.Name = "sum";
+            this.sum.Size = new System.Drawing.Size(94, 29);
+            this.sum.TabIndex = 4;
+            this.sum.Text = "Sum";
+            this.sum.UseVisualStyleBackColor = true;
+            this.sum.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button2
+            // y_f
             // 
-            this.button2.Location = new System.Drawing.Point(401, 121);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "concat";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.y_f.Location = new System.Drawing.Point(313, 121);
+            this.y_f.Name = "y_f";
+            this.y_f.Size = new System.Drawing.Size(125, 27);
+            this.y_f.TabIndex = 5;
+            this.y_f.TextChanged += new System.EventHandler(this.y_f_TextChanged);
+            // 
+            // y_k
+            // 
+            this.y_k.Location = new System.Drawing.Point(313, 88);
+            this.y_k.Name = "y_k";
+            this.y_k.Size = new System.Drawing.Size(125, 27);
+            this.y_k.TabIndex = 6;
+            // 
+            // x_s
+            // 
+            this.x_s.Location = new System.Drawing.Point(170, 55);
+            this.x_s.Name = "x_s";
+            this.x_s.Size = new System.Drawing.Size(125, 27);
+            this.x_s.TabIndex = 7;
+            // 
+            // y_s
+            // 
+            this.y_s.Location = new System.Drawing.Point(313, 55);
+            this.y_s.Name = "y_s";
+            this.y_s.Size = new System.Drawing.Size(125, 27);
+            this.y_s.TabIndex = 8;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.y_s);
+            this.Controls.Add(this.x_s);
+            this.Controls.Add(this.y_k);
+            this.Controls.Add(this.y_f);
+            this.Controls.Add(this.sum);
             this.Controls.Add(this.result);
-            this.Controls.Add(this.param2);
-            this.Controls.Add(this.param1);
+            this.Controls.Add(this.x_f);
+            this.Controls.Add(this.x_k);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -97,11 +122,14 @@ namespace WinFormsApp1
 
         #endregion
 
-        private System.Windows.Forms.TextBox param1;
-        private System.Windows.Forms.TextBox param2;
+        private System.Windows.Forms.TextBox x_k;
+        private System.Windows.Forms.TextBox x_f;
         private System.Windows.Forms.TextBox result;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button sum;
+        private System.Windows.Forms.TextBox y_f;
+        private System.Windows.Forms.TextBox y_k;
+        private System.Windows.Forms.TextBox x_s;
+        private System.Windows.Forms.TextBox y_s;
     }
 }
 
