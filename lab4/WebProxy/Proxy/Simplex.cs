@@ -22,7 +22,7 @@ using System.Xml.Serialization;
 
 
 /// <remarks/>
-namespace solution.Proxy
+namespace WebProxy
 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]

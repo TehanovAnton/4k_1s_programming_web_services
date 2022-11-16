@@ -11,7 +11,6 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml.Serialization;
@@ -22,7 +21,7 @@ using System.Xml.Serialization;
 
 
 /// <remarks/>
-namespace solution.Proxy
+namespace WindowsFormsApp1
 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -208,8 +207,7 @@ namespace solution.Proxy
             }
         }
 
-        /// <remarks/>
-        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        /// <remarks/>        
         [WebMethod(MessageName = "adds", Description = "Sum of 2 int. Response JSON")]
         public int Adds(int x, int y)
         {

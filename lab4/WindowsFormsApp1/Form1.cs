@@ -1,11 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp1
+namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
         private Simplex proxyClient;
+
         public Form1()
         {
             proxyClient = new Simplex();
@@ -14,12 +22,11 @@ namespace WinFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
         }
 
-        // Sum
-        private async void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
             A val1 = new A
             {
                 s = x_s.Text,
@@ -40,11 +47,6 @@ namespace WinFormsApp1
             {
                 result.Text = "Error!";
             }
-        }
-
-        private void y_f_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
