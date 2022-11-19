@@ -1,4 +1,5 @@
-﻿using System;
+﻿using solution.DB.models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace solution.DB
         { }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Note> Notes { get; set; }
     }
 }
