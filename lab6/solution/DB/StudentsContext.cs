@@ -7,9 +7,9 @@ using System.Web;
 
 namespace solution.DB
 {
-    public class StudentContext : DbContext
+    public class StudentsContext : DbContext
     {
-        public StudentContext() : base("DbConnection")
+        public StudentsContext() : base("DbConnection")
         { }
 
         public DbSet<Student> Students { get; set; }

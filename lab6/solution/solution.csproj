@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{474E5029-0830-4338-A870-1160A15AD011}</ProjectGuid>
+    <ProjectGuid>{8A5C92D5-5B3A-4B19-8E80-83B1F967CBE8}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -130,7 +130,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DB\models\Note.cs" />
     <Compile Include="DB\models\Student.cs" />
-    <Compile Include="DB\StudentContext.cs" />
+    <Compile Include="DB\StudentsContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,9 +206,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49993</DevelopmentServerPort>
+          <DevelopmentServerPort>51172</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49993/</IISUrl>
+          <IISUrl>http://localhost:51172/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

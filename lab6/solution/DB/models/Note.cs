@@ -12,7 +12,7 @@ namespace solution.DB.models
         public int Id { get; set; }
         public string Subj { get; set; }
         public int NoteValue { get; set; }
-        
+
         public int? StudentId { get; set; }
         public Student Student { get; set; }
     }

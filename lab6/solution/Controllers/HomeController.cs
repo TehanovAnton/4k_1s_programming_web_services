@@ -12,7 +12,7 @@ namespace solution.Controllers
     {
         public ActionResult Index()
         {
-            using (StudentContext db = new StudentContext())
+            using (StudentsContext db = new StudentsContext())
             {
                 Student anton = new Student { Name = "Anton" };
                 Student andrew = new Student { Name = "Andrew" };
