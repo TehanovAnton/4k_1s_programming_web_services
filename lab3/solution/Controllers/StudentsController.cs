@@ -79,7 +79,7 @@ namespace solution.Controllers
             if (student.Name == "" || student.Phone == "")
             {
                 ErrorWL error = new ErrorWL(1);
-                return JsonResponse(request, HttpStatusCode.OK, "json", JsonConvert.SerializeObject(error));
+                return JsonResponse(request, HttpStatusCode.BadRequest, "json", JsonConvert.SerializeObject(error));
             }
 
             DB.AddRecord(student.Name, student.Phone);

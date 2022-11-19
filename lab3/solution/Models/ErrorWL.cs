@@ -8,10 +8,10 @@ namespace solution.Models
     [Serializable]
     public class ErrorWL
     {
-        public static string UrlPref = "http://localhost:50369/api/errors";
+        public static string UrlPref = "http://localhost:8080/api/errors";
         public static Dictionary<int, string> codesDescription = new Dictionary<int, string>()
         {
-            { 1, "Da blyt"},
+            { 1, "Enpty fields"},
             { 2, "Tak blyt"},
             { 3, "Ladno blyt"}
         };
