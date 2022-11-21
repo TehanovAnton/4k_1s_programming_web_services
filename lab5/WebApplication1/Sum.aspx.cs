@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebApplication1.ServiceReference1;
+using WebApplication1.ServiceReference2;
 
 namespace WebApplication1
 {
@@ -13,7 +13,7 @@ namespace WebApplication1
         private WCFSiplexClient proxyClient;
         protected void Page_Load(object sender, EventArgs e)
         {
-            proxyClient = new WCFSiplexClient();
+            proxyClient = new WCFSiplexClient("BasicHttpBinding_IWCFSiplex");
         }
 
         protected void sum_Click(object sender, EventArgs e)

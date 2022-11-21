@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="440ed3c1-d5c0-4d0e-86ff-4be31f01f11c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bad58ff2-89db-42ff-8972-25f91bde754b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/solution/Service1/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/solution/ServiceHost1/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="76512499-d114-4c1a-be21-e1fe7f3b7f91" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/Service1/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d8a3e965-d5cb-4f44-b656-9f79db24dde5" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/Service1/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="ce2b9b93-8b03-4a08-84f4-fa11e4818672" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/Service1/mex" />
-    <MetadataFile FileName="solution.xsd" MetadataType="Schema" ID="a7d1f744-23b2-478d-8d90-1c8f67e98f36" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/Service1/mex" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="71a5d6e1-fe57-4013-9239-67378b83fcde" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/ServiceHost1/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="5687aa60-e85a-4b44-afd7-94d1f93a59ad" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/ServiceHost1/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="31b8d42b-ae86-4666-9a50-9b492a46015c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/ServiceHost1/?xsd=xsd2" />
+    <MetadataFile FileName="WCFSiplex.wsdl" MetadataType="Wsdl" ID="7d4c9393-6d9d-4cb8-879e-ee8eb860da33" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/ServiceHost1/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="28e88524-fd0f-4927-b36b-98d0a360824f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/solution/ServiceHost1/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.ServiceReference1 {
+namespace WebApplication1.ServiceReference2 {
     using System.Runtime.Serialization;
     using System;
     
@@ -152,7 +152,7 @@ namespace WebApplication1.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IWCFSiplex")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IWCFSiplex")]
     public interface IWCFSiplex {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFSiplex/GetData", ReplyAction="http://tempuri.org/IWCFSiplex/GetDataResponse")]
@@ -162,10 +162,10 @@ namespace WebApplication1.ServiceReference1 {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFSiplex/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IWCFSiplex/GetDataUsingDataContractResponse")]
-        WebApplication1.ServiceReference1.CompositeType GetDataUsingDataContract(WebApplication1.ServiceReference1.CompositeType composite);
+        WebApplication1.ServiceReference2.CompositeType GetDataUsingDataContract(WebApplication1.ServiceReference2.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFSiplex/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IWCFSiplex/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WebApplication1.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(WebApplication1.ServiceReference1.CompositeType composite);
+        System.Threading.Tasks.Task<WebApplication1.ServiceReference2.CompositeType> GetDataUsingDataContractAsync(WebApplication1.ServiceReference2.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFSiplex/Add", ReplyAction="http://tempuri.org/IWCFSiplex/AddResponse")]
         int Add(int x, int y);
@@ -180,19 +180,19 @@ namespace WebApplication1.ServiceReference1 {
         System.Threading.Tasks.Task<string> ConcatAsync(string x, double y);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFSiplex/Sum", ReplyAction="http://tempuri.org/IWCFSiplex/SumResponse")]
-        WebApplication1.ServiceReference1.A Sum(WebApplication1.ServiceReference1.A x, WebApplication1.ServiceReference1.A y);
+        WebApplication1.ServiceReference2.A Sum(WebApplication1.ServiceReference2.A x, WebApplication1.ServiceReference2.A y);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWCFSiplex/Sum", ReplyAction="http://tempuri.org/IWCFSiplex/SumResponse")]
-        System.Threading.Tasks.Task<WebApplication1.ServiceReference1.A> SumAsync(WebApplication1.ServiceReference1.A x, WebApplication1.ServiceReference1.A y);
+        System.Threading.Tasks.Task<WebApplication1.ServiceReference2.A> SumAsync(WebApplication1.ServiceReference2.A x, WebApplication1.ServiceReference2.A y);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWCFSiplexChannel : WebApplication1.ServiceReference1.IWCFSiplex, System.ServiceModel.IClientChannel {
+    public interface IWCFSiplexChannel : WebApplication1.ServiceReference2.IWCFSiplex, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WCFSiplexClient : System.ServiceModel.ClientBase<WebApplication1.ServiceReference1.IWCFSiplex>, WebApplication1.ServiceReference1.IWCFSiplex {
+    public partial class WCFSiplexClient : System.ServiceModel.ClientBase<WebApplication1.ServiceReference2.IWCFSiplex>, WebApplication1.ServiceReference2.IWCFSiplex {
         
         public WCFSiplexClient() {
         }
@@ -221,11 +221,11 @@ namespace WebApplication1.ServiceReference1 {
             return base.Channel.GetDataAsync(value);
         }
         
-        public WebApplication1.ServiceReference1.CompositeType GetDataUsingDataContract(WebApplication1.ServiceReference1.CompositeType composite) {
+        public WebApplication1.ServiceReference2.CompositeType GetDataUsingDataContract(WebApplication1.ServiceReference2.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(WebApplication1.ServiceReference1.CompositeType composite) {
+        public System.Threading.Tasks.Task<WebApplication1.ServiceReference2.CompositeType> GetDataUsingDataContractAsync(WebApplication1.ServiceReference2.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
@@ -245,11 +245,11 @@ namespace WebApplication1.ServiceReference1 {
             return base.Channel.ConcatAsync(x, y);
         }
         
-        public WebApplication1.ServiceReference1.A Sum(WebApplication1.ServiceReference1.A x, WebApplication1.ServiceReference1.A y) {
+        public WebApplication1.ServiceReference2.A Sum(WebApplication1.ServiceReference2.A x, WebApplication1.ServiceReference2.A y) {
             return base.Channel.Sum(x, y);
         }
         
-        public System.Threading.Tasks.Task<WebApplication1.ServiceReference1.A> SumAsync(WebApplication1.ServiceReference1.A x, WebApplication1.ServiceReference1.A y) {
+        public System.Threading.Tasks.Task<WebApplication1.ServiceReference2.A> SumAsync(WebApplication1.ServiceReference2.A x, WebApplication1.ServiceReference2.A y) {
             return base.Channel.SumAsync(x, y);
         }
     }

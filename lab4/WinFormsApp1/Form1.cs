@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
+using ServiceReference3;
 
 namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        private Simplex proxyClient;
+        private SimplexSoapClient proxyClient;
         public Form1()
         {
-            proxyClient = new Simplex();
+            proxyClient = new SimplexSoapClient(SimplexSoapClient.EndpointConfiguration.SimplexSoap12, "https://localhost:44349/Simplex.asmx");
             InitializeComponent();
         }
 
@@ -32,7 +33,7 @@ namespace WinFormsApp1
                 k = int.Parse(y_k.Text),
                 f = float.Parse(y_f.Text),
             },
-            resValue = proxyClient.Sum(val1, val2);
+            resValue = (await proxyClient.SumAsync(val1, val2)).sumResult;
 
             result.Text = $"{resValue.s} - {resValue.k} - {resValue.f}";
 
