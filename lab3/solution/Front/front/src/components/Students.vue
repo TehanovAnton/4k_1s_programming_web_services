@@ -38,7 +38,7 @@
   })
   
   async function fetchStudents () {
-    let studentsUrl = `http://localhost:50369/api/students.json/`
+    let studentsUrl = `http://localhost:8080/api/students.json/`
     let response = await axios.get(studentsUrl, { params: filterStore.state })
     .catch(error => {
       console.log(error)
@@ -66,7 +66,7 @@
   }
 
   const newView = () => {
-    router.push({ name: 'createStudent', params: { postStudentUrl: 'http://localhost:50369/api/students/' } });
+    router.push({ name: 'createStudent', params: { postStudentUrl: 'http://localhost:8080/api/students/' } });
   }
 </script>
 

@@ -11,8 +11,7 @@
   })
 
   const fetchStudents = async () => {
-    let studentsUrl = `http://localhost:50369/api/students.xml/`
-    debugger
+    let studentsUrl = `http://localhost:8080/api/students.xml/`
     let response = await axios.get(studentsUrl, { params: filters.state })
     .catch(error => {
       console.log(error)

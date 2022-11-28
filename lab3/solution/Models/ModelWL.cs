@@ -7,7 +7,7 @@ namespace solution.Models
 {
     public class ModelWL
     {
-        public static string UrlPref = "http://localhost:50369/api/students";
+        public static string UrlPref = "http://localhost:8080/api/students";
 
         public static List<StudentWL> StudentsWithLinks(List<Student> students, string columns = "Id,Name,Phone")
         {

@@ -8,7 +8,7 @@
     const route = useRoute()
     const postStudentUrl = ref('');
     const newStud = ref({ Name: '', Phone: '' })
-    const errors = useErrorsStore();
+    const errorsStore = useErrorsStore();
     
 
     onBeforeMount(async () => {
@@ -19,16 +19,14 @@
       let response = await axios.post(postStudentUrl.value, {
         Name: newStud.value.Name,
         Phone: newStud.value.Phone,
-      }).catch(error => {
-        console.log(error)
+      }).catch(error => {        
+        errorsStore.setError(JSON.parse(error.response.data))
+        router.push({ name: 'errors' })
+        return
       })
 
       if (response && response.status === 200) {
         router.push({ name: 'students' })
-      } else {
-        debugger
-        errors = JSON.parse(response.data)
-        router.push({ name: 'error' })
       }
     }
 </script>

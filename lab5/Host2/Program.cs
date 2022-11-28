@@ -11,7 +11,7 @@ namespace Host2
     {
         static void Main(string[] args)
         {
-            WCFSiplexClient service1Client = new WCFSiplexClient("NetTcpBinding_IWCFSiplex");            
+            WCFSiplexClient service1Client = new WCFSiplexClient("tcpEndpoint");            
 
             var sumResult = service1Client.Sum(new A { f = 3.2f, k = 1, s = "4" }, new A { f = 1.3f, k = 2, s = "12" });
 
